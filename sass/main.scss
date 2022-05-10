@@ -1,0 +1,489 @@
+:root{
+    --color-primary: #3AAFA9;
+    --color-primary-light: #72e1db;
+    --color-primary-dark: #007f7a;
+
+    --color-background-black: #191919;
+
+    --color-grey-light-1: #faf9f9;
+    --color-grey-light-2: #f4f2f2;
+    --color-grey-light-3: #f0eeee;
+    --color-grey-light-4: #ccc;
+    --color-grey-dark-1: #333;
+    --color-grey-dark-2: #777;
+    --color-grey-dark-3: #999;
+
+    --shadow-dark: 0 2rem 6rem rgba(0,0,0,.3);
+    --shadow-light: 0 2rem 5rem rgba(0,0,0,.06);
+
+    // used for borders/border bottoms generally
+    
+    // it's okay to use var inside another var
+    --line: 1px solid var(--color-grey-light-2);
+}
+*,
+*::before,
+*::after
+/* Include after and before just incase to avoid strange 
+behavior with animations or whatever */
+{
+
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    /* good practice to inherit from body in case want to 
+    change sizing with plugons or other components later */
+}
+
+html{
+    font-size: 62.5%;;
+    /* We want 10px as root font size.. it's 16px by default
+    Change to 62.5% to get 10px  */
+    // TLDR: THIS DEFINES WHAT 1 REM IS! 
+}
+
+body{
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+}
+
+
+///// UTILITY
+
+.section-container{
+    width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.flex-row{
+    display: flex;
+    justify-content: center;
+}
+
+.text-primary{
+    color: var(--color-primary);
+}
+
+.header-primary{
+
+    font-size: 6rem;
+    &--main{
+        font-size: 8rem;
+    }
+}
+
+.header-secondary{
+    font-size: 4rem;
+}
+
+.header-3{
+    font-size: 3rem;
+}
+
+
+.sweep-effect{
+    display: inline-block; // necessary for effect! 
+    background-image: linear-gradient(120deg,  transparent 0%, transparent 50%, var(--color-primary) 50%);
+    background-size: 240%;  // so it's completely covered
+    transition: all .5s;
+    &:hover,
+    &:active{
+        // this shifts that background 100% over, covering it in the white
+        // (hidden before hover) portion of the gradient  
+        background-position: 100%;
+        // background-position: 190%;    // actually looks cool!
+
+        color: white;
+        // transform: translateX(.25rem) scale(1.05);
+        // background-image: linear-gradient( 120deg, orangered 0%, white 11%, white 100%);
+        // background-size: 100%;
+        // transition: all 3s;
+        
+    }
+}
+
+//// END UTILITY
+
+// NAVBAR
+.nav {
+    height: 10rem;
+    width: 100%;
+    max-width: 120rem;
+    font-size: 2rem;
+
+    margin: 0 auto;
+    padding: 0 3rem;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &__link {
+  
+      &--list { // ul containing the li's
+        display: flex;
+        align-items: center;
+        list-style-type: none;
+  
+        &-item { // this is the li
+            position: relative; // ?
+          text-decoration: none;
+          font-weight: 600;
+        }
+      }
+  
+      &--anchor { // this is the a href
+          text-decoration: none;
+          margin: 0 .25rem;
+          color: black;
+          padding: 1rem 2rem;
+          display: inline-block; // necessary for effect!           
+          color: black;
+          text-transform: uppercase;
+          //increasing background size from 100% makes it go across the element
+          // it's obviously actually bigger than the entire link element, it's just not shown because
+          // it's contained
+          // background-image: linear-gradient(120deg,  orangered 0%, orangered 50%, white 50%);
+          // gradients begin from horizontally "facing down"
+          // can't see it here because the size is 230%; hover and move it over 
+          background-image: linear-gradient(120deg,  transparent 0%, transparent 50%, var(--color-primary) 50%);
+          background-size: 230%;  // so it's completely covered
+          transition: all .4s;
+
+          &:hover,
+          &:active{
+              // this shifts that background 100% over, covering it in the white
+              // (hidden before hover) portion of the gradient  
+              background-position: 100%;
+              // background-position: 190%;    // actually looks cool!
+  
+              color: white;
+              transform: translateX(.25rem) scale(1.05);
+              // background-image: linear-gradient( 120deg, orangered 0%, white 11%, white 100%);
+              // background-size: 100%;
+              // transition: all 3s;
+              
+          }
+      }
+    }
+  }
+
+
+  // HERO
+
+.hero{
+    height: 90vh;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // margin-bottom: -10rem;
+    // background-color: mistyrose;
+}
+
+.about-me{
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    &__info{
+        flex-basis: 50%;
+
+        &--title{
+            display: inline-block;
+            margin-bottom: 2rem;
+            // color: var(--color-grey-dark-1);
+        }
+
+        &--subtitle{
+            display: inline-block;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+    
+        &--para{
+            display: inline-block;
+            font-size: 2rem;
+            line-height: 1.6;
+        }
+
+
+        &--list{
+            margin-top: 2rem;
+            list-style: none;
+            
+            &-item{ // icons for github, linkedin, etc
+                position: relative; // so icon title effect works
+                display: inline-block;
+                padding: 0 3.2rem 0 0;
+
+
+                &:hover .about-me__info--list-name{
+                transform: scale(1);
+                opacity: 1;
+                }
+
+                &:hover .about-me__info--list-icon{
+                    color: var(--color-primary);
+                    transform: scale(1.2);
+
+                }
+                
+            }
+
+            &-icon{
+                font-size: 3rem;
+                color: var(--color-grey-dark-1);
+                transition: all .25s;  
+            }
+
+            &-name{ // label for github, linkedin, etc
+                // absolute positioning; it won't have an effect on parents size or position
+                position: absolute;
+                font-size: 1.6rem;
+                top: 5rem;
+                right: 2rem;
+                //right: 0;
+                
+                // For zoom in name effect
+                // start from size 0 opacity 0..
+                // go to full size and opaque
+                opacity: 0;
+                transform: scale(0);
+                transition: all .25s;
+
+            }
+
+            &--span{
+                display: inline-block;
+                position: relative;
+            }
+        }
+    }
+
+    &__img{ // large svg icon
+        // width 100% prevents image from overflowing out of the parent --container 
+        width: 100%;
+        // animation: fade-up 1s;
+        // __img--container: contains the large svg image
+        // this is actually the parent of &__img
+        &--container{
+
+            flex-basis: 30%;
+            // used with flex and flex direction column in the parent "about-me__info" 
+            // section - setting flex to 1, display to flex and align-items center
+            // will cause this container to expand with the size of the window and center the image
+            // ... this automatically adds some space when available but shrinks it down if needed
+            // keeps it basically centered perfectly
+            // flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+
+.skills{ // parent of entire section
+    background-color: var(--color-grey-light-1);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5rem 0;
+
+    &__box{ // contains the sections - languages, frontend, backend, etc.
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        flex: 0 0 50%;
+        margin: 2rem 0;
+    }
+
+
+    &__container{   // container for the skill boxes
+        padding-top: 5rem;
+        min-height: 60vh;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &__list{
+        display: flex;
+        justify-content: center;
+        padding-top: 3rem;
+        flex-wrap: wrap;
+
+        &--item{    // container for name, image, image wrapper,etc.
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+
+            // Hover over skills icon/image effect
+            &:hover .skills__img{
+                transform: scale(1.2);
+                filter: brightness(.95);
+                opacity: 0.86;
+            }
+
+            // &:hover .skills__name{
+            //     transform: scale(.9);
+            //     color: var(--color-primary);
+            //     font-weight: 700;
+            //     // filter: brightness(.8);
+            //     // opacity: 0.86;
+            // }
+
+        }
+    }
+
+    &__img{
+        // makes the img responsive
+        width: 100%;
+        max-width: 4.5rem;
+        transition: all .2s; // image shrink effect on hover
+        
+        &--wrapper{ // parent of __img
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem .75rem;
+
+            // ensure wrapper is same size across all icons; fills available space so 
+            // that names and icons all line up correctly
+            width: 100%;
+            height: 100%;
+            
+        }
+    }
+
+    &__name{
+        font-size: 1.6rem;
+        padding: .5rem .25rem;
+
+        // For zoom in name effect
+        // start from size 0 opacity 0..
+        // go to full size and opaque
+        // opacity: 0;
+        // transform: scale(0);
+        transition: all .25s;
+    }
+
+    &--title{
+        display: inline-block;
+        position: relative;
+        
+        // text-align: center;
+    }
+
+    &--title-secondary{
+        padding: .75rem 1.25rem;
+
+    }
+}
+
+.underline-effect{
+
+        &:hover:after{
+            width: 100%;
+            left: 0;
+        }
+
+        &:after{
+            content: "";
+            position: absolute;
+            height: 3px;
+            background-color: var(--color-primary);
+            width: 0;
+            bottom: -3px;
+            right: 0;
+
+            transition: all .3s;
+
+        }
+        &--white:after{ // so the underline is white in the footer where bg color is blackish
+            background-color: #fff;
+        }
+    // }
+}
+
+
+
+.education{
+
+    height: 90vh;
+
+    &--text{
+        display: inline-block;
+        font-size: 2rem;
+        line-height: 1.6;
+    }
+
+    &__flex-row{
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-around;
+        max-width: 80rem;
+    }
+
+    &__container--right{
+        flex-basis: 50%;
+
+
+
+    }
+
+
+    &__container--left{
+        flex-basis: 50%;
+
+    }
+
+    &__coursework--list{
+        list-style-type: none;
+
+        &-item{
+
+        }
+
+
+    
+    }
+
+    &--title{
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        margin-bottom: 5rem;
+
+    }
+
+
+
+
+
+}
+
+.about-me__info--title{ // for underline effect
+    position: relative;
+    
+}
+
+.about-me__info--subtitle{ // for underline effect
+    position: relative;
+}
+
+
+
+.side-nav__icon{
+    fill: #3AAFA9;
+}
+
+.side-nav__link{
+    fill: #3AAFA9;
+}
