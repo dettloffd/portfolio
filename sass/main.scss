@@ -420,6 +420,7 @@ body{
         margin: 0 auto;
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
         max-width: 90rem;
     }
 
@@ -446,7 +447,25 @@ body{
         list-style-type: none;
 
         &-item{
-            display: block;
+            display: flex;
+            // justify-content: center;
+            align-items: center;
+            
+
+            &:hover .education__coursework--list-icon{
+                padding-right: .1rem;
+                font-weight: 700;
+                transform: scale(1.25);
+                // font-size: 2.8rem;
+            }
+
+        }
+
+        &-icon{ // chevron list item icon
+            transition: all .2s;
+            color: var(--color-primary);
+            padding-right: .5rem;
+            font-size: 2.4rem;
 
         }
 
@@ -475,6 +494,11 @@ body{
 
 
 
+}
+
+.contact{
+    // background-color: red;
+    height: 80vh;
 }
 
 .about-me__info--title{ // for underline effect
