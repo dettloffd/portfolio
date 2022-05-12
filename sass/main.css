@@ -42,7 +42,17 @@ body {
   width: 100%;
   max-width: 120rem;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 7rem 2rem;
+}
+
+.section-container--navbar {
+  padding: 0;
+}
+
+.navbar-container {
+  width: 100%;
+  max-width: 120rem;
+  margin: 0 auto;
 }
 
 .flex-row {
@@ -148,7 +158,20 @@ body {
 }
 
 .hero {
-  height: 90rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 100%;
+  padding: 5rem 0;
+  min-height: 80vh;
+  padding-bottom: 30rem;
 }
 
 .about-me {
@@ -252,7 +275,6 @@ body {
 .skills {
   background-color: var(--color-grey-light-1);
   width: 100%;
-  padding: 5rem 0;
 }
 
 .skills--title {
@@ -352,6 +374,10 @@ body {
 
 .underline-effect--white:after {
   background-color: #fff;
+}
+
+.education {
+  min-height: 80vh;
 }
 
 .education__item-row {
