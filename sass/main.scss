@@ -84,6 +84,10 @@ body{
     font-size: 3rem;
 }
 
+.align-text-center{
+    text-align: center;
+}
+
 
 .sweep-effect{
     display: inline-block; // necessary for effect! 
@@ -176,7 +180,9 @@ body{
   // HERO
 
 .hero{
-    height: 90vh;
+    // height: 90vh;
+    // height: 90%;
+    height: 90rem;
     // display: flex;
     // flex-direction: column;
     // justify-content: center;
@@ -185,7 +191,7 @@ body{
 }
 
 .about-me{
-    min-height: 60vh;
+    // min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -295,10 +301,7 @@ body{
     
 
     &--title{
-        display: inline-block;
-        text-align: center;
         position: relative;
-        // width: auto;
        
     }
 
@@ -306,7 +309,7 @@ body{
     &__container{
         max-width: 120rem;
         display: flex;
-        align-items: center;
+        // align-items: center;
         justify-content: center;
         flex-wrap: wrap;
         margin: 0 auto;
@@ -406,7 +409,13 @@ body{
 
 .education{
 
-    height: 90vh;
+    // height: 80vh;
+
+    &__item-row{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
     &--text{
         display: inline-block;
@@ -416,42 +425,45 @@ body{
         
     }
 
-    &__flex-row{
+    &__flex-column{
         margin: 0 auto;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         flex-wrap: wrap;
         max-width: 90rem;
-    }
-
-    &__container--right{
-        flex-basis: 50%;
-        display: flex;
-        flex-direction: column;
-
 
 
     }
 
-
-    &__container--left{
+    &__container--top{
         padding: 0 2rem;
         display: flex;
         flex-direction: column;
-        flex-basis: 50%;
-        // text-align: ceter;
-
+        justify-content: flex-end;
     }
 
+    &__container--bottom{
+        padding: 0 2rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+
     &__coursework--list{
+        // margin: 2rem auto;
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
         list-style-type: none;
 
         &-item{
+            flex: 1 0 33%;
             display: flex;
-            // justify-content: center;
             align-items: center;
-            
-
+            font-size: 1.6rem;
             &:hover .education__coursework--list-icon{
                 padding-right: .1rem;
                 font-weight: 700;
@@ -490,14 +502,10 @@ body{
         margin: 1rem 0;
     }
 
-
-
-
-
 }
 
 .contact{
-    // background-color: red;
+    background-color: var(--color-grey-light-1);
     height: 80vh;
 }
 
@@ -518,4 +526,113 @@ body{
 
 .side-nav__link{
     fill: #3AAFA9;
+}
+
+
+.contact{
+    height: 50rem;
+    // background-color: red;
+
+    &__form-wrapper{
+        // padding: 5rem;
+        max-width: 80rem;
+        // background-color: var(--color-primary);
+        margin: 0 auto;
+        // border: 1px solid var(--color-grey-light-3);
+        // padding: 4rem 3rem 2rem 3rem;
+
+    }
+
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__group{
+        width: 100%;
+    }
+
+    &__group:not(:last-child){
+        margin-bottom: 1rem;
+    }
+
+    &__input{
+        // for some reason inputs don't automatically inherit font settings
+        // must set manually like so..
+        font-family: inherit;
+        // color: inherit; // same with color
+
+        font-size: 1.5rem;
+        padding: .8rem 1.2rem;
+        border-radius: 2px;
+        // background-color: rgba($color-white, .5);
+        border: 2px solid var(--color-grey-dark-2);
+
+        // take up the whole area.. block structuring
+        width: 100%;
+        display: block;
+
+        // **THIS IS SO input element doesn't get "pushed down" when focused border bottom appears below
+        // turn off to see 
+        // border: 1px solid var(--color-grey-dark-1); 
+
+        transition: all .3s; // for focused input border-bottom 
+
+        &:focus{
+            outline: none; // ugly blue border on focus
+            
+            // These are important for accessibility reasons - 
+            // want to ensure you know what input element is focused in case using keyboard only to navigate
+            // plus it just looks good
+            // box-shadow: 0 1rem 2rem rgba($color-black, .1);
+            border: 2px solid var(--color-primary);
+            
+        }
+
+        //when input is invalid
+        &:focus:invalid{
+            border: 2px solid var(--color-primary-dark);
+
+        }
+        &::-webkit-input-placeholder{
+            color: var(--color-grey-dark-2);
+        }
+    }
+
+    &__btn{
+
+        text-decoration: none;
+        margin: 0 .25rem;
+        color: white;
+        background-color: var(--color-primary);
+        padding: 1rem 5rem;
+        display: inline-block; // necessary for effect!           
+
+        font-size: 2rem;
+
+        transition: all .2s;
+        backface-visibility: hidden;
+
+        
+        &:hover{
+            backface-visibility: hidden;
+              color: white;
+              transform: scale(1.05);
+              background-color: var(--color-primary-dark);
+              // background-image: linear-gradient( 120deg, orangered 0%, white 11%, white 100%);
+              // background-size: 100%;
+              // transition: all 3s;
+              
+          }
+
+        
+
+        
+
+    }
+
+    
+
 }
