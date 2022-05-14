@@ -36,7 +36,8 @@ behavior with animations or whatever */
 }
 
 html{
-    font-size: 62.5%;;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
     /* We want 10px as root font size.. it's 16px by default
     Change to 62.5% to get 10px  */
     // TLDR: THIS DEFINES WHAT 1 REM IS! 
@@ -54,25 +55,23 @@ body{
     width: 100%;
     max-width: 120rem;
     margin: 0 auto;
-    // padding: 2rem;
-    // padding: 5rem 0;
+    padding: 5rem 2rem;
 
-    padding: 7rem 2rem;
+    animation: fade-up .75s .2s backwards;
+    // animation name, length of animation, animation delay..
+    // and backwards ensures that on load the content doesn't show before delay is over!
 
-    &--navbar{
+    &--navbar{ // navar has it's own padding
         padding: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        transition: all .2s; // so when it resizes there's no stuttering
 
     }
- 
-    
 }
 
-.navbar-container{
-    width: 100%;
-    max-width: 120rem;
-    margin: 0 auto;
-
-}
 
 .flex-row{
     display: flex;
@@ -85,7 +84,6 @@ body{
 }
 
 .header-primary{
-
     font-size: 6rem;
     &--main{
         font-size: 8rem;
@@ -104,6 +102,15 @@ body{
     text-align: center;
 }
 
+.margin-bottom-2rem{
+    margin-bottom: 2rem;
+}
+
+.margin-navbar-sticky{
+    margin-top: .75rem !important;
+    margin-bottom: .5rem !important;
+}
+
 
 .sweep-effect{
     display: inline-block; // necessary for effect! 
@@ -115,27 +122,39 @@ body{
         // this shifts that background 100% over, covering it in the white
         // (hidden before hover) portion of the gradient  
         background-position: 100%;
-        // background-position: 190%;    // actually looks cool!
 
         color: white;
-        // transform: translateX(.25rem) scale(1.05);
-        // background-image: linear-gradient( 120deg, orangered 0%, white 11%, white 100%);
-        // background-size: 100%;
-        // transition: all 3s;
+        transform: scale(1.05);
         
+    }
+}
+
+.navbar-sticky{
+    padding-right: 2rem;
+    width: 100%;
+    z-index: 1000;
+    background: white;
+    font-size: 1.2rem;
+    
+    &--anchor{
+        padding: .5rem 1rem;
+        font-size: 1.2rem;
     }
 }
 
 //// END UTILITY
 
-// NAVBAR
-.nav {
-    height: 10rem;
+//// NAVBAR
+.nav {    
+    // so when it resizes there's no stuttering - same as on section-container--navbar
+    transition: all .2s; 
+    height: auto;
     width: 100%;
     max-width: 120rem;
     font-size: 2rem;
 
-    margin: 0 auto;
+
+    margin: 2rem auto 2rem auto;
     padding: 0 3rem;
 
     display: flex;
@@ -150,7 +169,7 @@ body{
         list-style-type: none;
   
         &-item { // this is the li
-            position: relative; // ?
+        position: relative; // ?
           text-decoration: none;
           font-weight: 600;
         }
@@ -164,75 +183,44 @@ body{
           display: inline-block; // necessary for effect!           
           color: black;
           text-transform: uppercase;
-          //increasing background size from 100% makes it go across the element
-          // it's obviously actually bigger than the entire link element, it's just not shown because
-          // it's contained
-          // background-image: linear-gradient(120deg,  orangered 0%, orangered 50%, white 50%);
-          // gradients begin from horizontally "facing down"
-          // can't see it here because the size is 230%; hover and move it over 
-          background-image: linear-gradient(120deg,  transparent 0%, transparent 50%, var(--color-primary) 50%);
-          background-size: 230%;  // so it's completely covered
-          transition: all .4s;
+          transition: all .5s; // THIS controls how fast the sweep effect on this element is**
 
-          &:hover,
-          &:active{
-              // this shifts that background 100% over, covering it in the white
-              // (hidden before hover) portion of the gradient  
-              background-position: 100%;
-              // background-position: 190%;    // actually looks cool!
-  
-              color: white;
-              transform: translateX(.25rem) scale(1.05);
-              // background-image: linear-gradient( 120deg, orangered 0%, white 11%, white 100%);
-              // background-size: 100%;
-              // transition: all 3s;
-              
-          }
+
       }
     }
   }
+//// END NAV
 
-
-  // HERO
+//// HERO
 
 .hero{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    // background-color: var(--color-grey-light-1);
     width: 100%;
     padding: 5rem 0;
-    min-height: 80vh;
-    padding-bottom: 30rem;
-    // height: 90%;
-    // height: 90rem;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    // margin-bottom: -10rem;
-    // background-color: mistyrose;
+    min-height: 95vh;
 }
 
 .about-me{
-    // min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: space-around;
 
     &__info{
         flex-basis: 50%;
-        // position: relative;
 
         &--title{
             display: inline-block;
             margin-bottom: 2rem;
-            // color: var(--color-grey-dark-1);
+            position: relative; // for underline effect **
         }
 
         &--subtitle{
             display: inline-block;
             font-size: 3rem;
             margin-bottom: 2rem;
+            position: relative; // for underline effect** 
         }
     
         &--para{
@@ -240,7 +228,6 @@ body{
             font-size: 2rem;
             line-height: 1.6;
         }
-
 
         &--list{
             margin-top: 2rem;
@@ -250,7 +237,6 @@ body{
                 position: relative; // so icon title effect works
                 display: inline-block;
                 padding: 0 3.2rem 0 0;
-
 
                 &:hover .about-me__info--list-name{
                 transform: scale(1);
@@ -262,7 +248,6 @@ body{
                     transform: scale(1.2);
 
                 }
-                
             }
 
             &-icon{
@@ -276,9 +261,7 @@ body{
                 position: absolute;
                 font-size: 1.6rem;
                 top: 5rem;
-                right: 2rem;
-                //right: 0;
-                
+                right: 2rem;                
                 // For zoom in name effect
                 // start from size 0 opacity 0..
                 // go to full size and opaque
@@ -304,12 +287,6 @@ body{
         &--container{
 
             flex-basis: 30%;
-            // used with flex and flex direction column in the parent "about-me__info" 
-            // section - setting flex to 1, display to flex and align-items center
-            // will cause this container to expand with the size of the window and center the image
-            // ... this automatically adds some space when available but shrinks it down if needed
-            // keeps it basically centered perfectly
-            // flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -320,19 +297,18 @@ body{
 .skills{ // parent of entire section
     background-color: var(--color-grey-light-1);
     width: 100%;
-    // padding: 5rem 0;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 80vh;    
 
     &--title{
         position: relative;
-       
     }
-
 
     &__container{
         max-width: 120rem;
         display: flex;
-        // align-items: center;
         justify-content: center;
         flex-wrap: wrap;
         margin: 0 auto;
@@ -341,31 +317,31 @@ body{
     }
 
     &__item{
+        color: var(--color-primary);
         padding: 1rem .6rem;
+        margin-top: .3rem;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 1.8rem;
-        // background-color: red;
         flex-basis: 30%;
         position: relative; // for bottom line to work
 
+        &:hover .skills__item-name{ // for sweep effect to work properly **
+            color: white;
+
+        }
 
         &-icon{
             font-size: 3.6rem;
-            color: var(--color-primary);
-            transition: all .25s;
             margin-right: 2rem;  
             transition: all .2s;
-
         }
         &-name{
-            // font-size: 1.6rem;
-            transition: all .2s;
+            color: black;
+            transition: all .5s; // sweep effect
             font-weight: 500;
-
         }
-
 
         &__bottom-border{
             display: inline-block;
@@ -376,9 +352,7 @@ body{
             height: .25rem;
             width: 80%;
 
-            transition: all .2s;
-            // text-align: center;
-            
+            transition: all .2s;            
         }
 
     }
@@ -386,21 +360,15 @@ body{
 
 .skills__item:hover .skills__item__bottom-border{
     width: 100%;
-    //background-color: red;
     background-color: var(--color-primary-dark);
-    
 }
-.skills__item:hover .skills__item-name{
-    transform: scale(1.15);
-    
-}
+// .skills__item:hover .skills__item-name{
+//     transform: scale(1.15);
+// }
 
-.skills__item:hover .skills__item-icon{
-    transform: scale(1.15);
-    
-}
-
-
+// .skills__item:hover .skills__item-icon{
+//     transform: scale(1.15);
+// }
 
 
 .underline-effect{
@@ -418,26 +386,27 @@ body{
             width: 0;
             bottom: -3px;
             right: 0;
-
             transition: all .3s;
-
         }
         &--white:after{ // so the underline is white in the footer where bg color is blackish
             background-color: #fff;
         }
-    // }
 }
 
 
 
 .education{
 
-    min-height: 80vh;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     &__item-row{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-bottom: 2px dashed var(--color-grey-light-4);
     }
 
     &--text{
@@ -456,7 +425,6 @@ body{
         flex-wrap: wrap;
         max-width: 90rem;
 
-
     }
 
     &__container--top{
@@ -473,9 +441,7 @@ body{
         flex-wrap: wrap;
     }
 
-
     &__coursework--list{
-        // margin: 2rem auto;
         margin-top: 2rem;
         display: flex;
         justify-content: center;
@@ -491,9 +457,7 @@ body{
                 padding-right: .1rem;
                 font-weight: 700;
                 transform: scale(1.25);
-                // font-size: 2.8rem;
             }
-
         }
 
         &-icon{ // chevron list item icon
@@ -503,9 +467,6 @@ body{
             font-size: 2.4rem;
 
         }
-
-
-    
     }
 
     &--title{
@@ -518,7 +479,7 @@ body{
 
     &__header{
         padding: .25rem .5rem;
-        align-self: flex-start; // sp bg color doesn't fill entire length of column
+        align-self: flex-start; // so bg color doesn't fill entire length of row
         background-color: var(--color-primary);
         color: white;
         font-weight: 500;
@@ -529,43 +490,15 @@ body{
 
 .contact{
     background-color: var(--color-grey-light-1);
-    height: 80vh;
-}
-
-.about-me__info--title{ // for underline effect
-    position: relative;
-    
-}
-
-.about-me__info--subtitle{ // for underline effect
-    position: relative;
-}
-
-
-
-.side-nav__icon{
-    fill: #3AAFA9;
-}
-
-.side-nav__link{
-    fill: #3AAFA9;
-}
-
-
-.contact{
-    height: 50rem;
-    // background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 70vh;
 
     &__form-wrapper{
-        // padding: 5rem;
         max-width: 80rem;
-        // background-color: var(--color-primary);
         margin: 0 auto;
-        // border: 1px solid var(--color-grey-light-3);
-        // padding: 4rem 3rem 2rem 3rem;
-
     }
-
 }
 
 .form{
@@ -585,23 +518,16 @@ body{
         // for some reason inputs don't automatically inherit font settings
         // must set manually like so..
         font-family: inherit;
-        // color: inherit; // same with color
 
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         padding: .8rem 1.2rem;
         border-radius: 2px;
-        // background-color: rgba($color-white, .5);
         border: 2px solid var(--color-grey-dark-2);
 
         // take up the whole area.. block structuring
         width: 100%;
         display: block;
-
-        // **THIS IS SO input element doesn't get "pushed down" when focused border bottom appears below
-        // turn off to see 
-        // border: 1px solid var(--color-grey-dark-1); 
-
-        transition: all .3s; // for focused input border-bottom 
+        // transition: all .3s; // for focused input border-bottom 
 
         &:focus{
             outline: none; // ugly blue border on focus
@@ -609,53 +535,104 @@ body{
             // These are important for accessibility reasons - 
             // want to ensure you know what input element is focused in case using keyboard only to navigate
             // plus it just looks good
-            // box-shadow: 0 1rem 2rem rgba($color-black, .1);
             border: 2px solid var(--color-primary);
-            
         }
-
         //when input is invalid
         &:focus:invalid{
             border: 2px solid var(--color-primary-dark);
-
         }
         &::-webkit-input-placeholder{
             color: var(--color-grey-dark-2);
         }
     }
-
     &__btn{
-
-        text-decoration: none;
         margin: 0 .25rem;
         color: white;
         background-color: var(--color-primary);
         padding: 1rem 5rem;
         display: inline-block; // necessary for effect!           
-
         font-size: 2rem;
-
         transition: all .2s;
         backface-visibility: hidden;
-
+        border: none;
+        cursor: pointer;
         
         &:hover{
             backface-visibility: hidden;
               color: white;
               transform: scale(1.05);
               background-color: var(--color-primary-dark);
-              // background-image: linear-gradient( 120deg, orangered 0%, white 11%, white 100%);
-              // background-size: 100%;
-              // transition: all 3s;
-              
           }
+    }
+}
 
-        
+.footer{
+    background-color: #333;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
 
-        
-
+    &__up-arrow{
+        margin-bottom: 7.5rem;
+        display: inline-block;
+        &:hover .footer__icon--up{
+            color: var(--color-primary-light);
+            transform: translateY(-.75rem);
+        }
     }
 
-    
+    &__item{
+        margin: 0 1rem;
 
+        &:hover .footer__icon{
+            color: var(--color-primary-light);
+            transform: scale(1.1);
+        }  
+    }
+
+    &__icon{
+        font-size: 3rem;
+        color: white;
+        transition: all .25s;
+    }
+
+    &__social{
+
+        &--list{
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        &--item{
+            margin: 0 1rem;
+            &:hover .footer__social--icon{
+                color: var(--color-primary-light);
+                transform: scale(1.1);
+
+            }  
+        }
+
+        &--link{
+            text-decoration: none;
+        }
+    }
+
+}
+
+
+@keyframes fade-up{
+    0%{
+        opacity: 0;
+        transform: translateY(4rem);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
