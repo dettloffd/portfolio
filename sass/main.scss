@@ -186,8 +186,19 @@ body{
     background-image: linear-gradient(120deg,  transparent 0%, transparent 50%, var(--color-primary) 50%);
     background-size: 240%;  // so it's completely covered
     transition: all .5s;
-    &:hover,
-    &:active{
+    // &:hover,
+    // &:active{
+    //     // this shifts that background 100% over, covering it in the white
+    //     // (hidden before hover) portion of the gradient  
+    //     background-position: 100%;
+
+    //     color: white;
+    //     transform: scale(1.05);
+        
+    // }
+
+    
+    &:hover{
         // this shifts that background 100% over, covering it in the white
         // (hidden before hover) portion of the gradient  
         background-position: 100%;
@@ -288,24 +299,25 @@ body{
 
 //// HERO
 
-.hero{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 100%;
-    padding: 5rem 0;
-    min-height: 95vh;
+// .hero{
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-evenly;
+//     width: 100%;
+//     padding: 5rem 0;
+//     min-height: 95vh;
 
-}
+// }
 
 .about-me{
     display: flex;
     align-items: center;
     justify-content: space-around;
+    min-height: 100vh;
 
     @include respond(tab-port){
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-around;
         margin-top: 2rem;
         height: 100%;
 
@@ -315,6 +327,7 @@ body{
         display: flex;
         flex-direction: column;
         // flex-basis: 50%;
+        justify-content: center;
         flex: 1;
         @include respond(tab-port){
             width: 70%;
