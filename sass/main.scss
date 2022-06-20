@@ -198,16 +198,22 @@ body{
     // }
 
     
-    &:hover{
-        // this shifts that background 100% over, covering it in the white
-        // (hidden before hover) portion of the gradient  
-        background-position: 100%;
+    // &:hover{
+    //     // this shifts that background 100% over, covering it in the white
+    //     // (hidden before hover) portion of the gradient  
+    //     background-position: 100%;
 
-        color: white;
-        transform: scale(1.05);
+    //     color: white;
+    //     transform: scale(1.05);
         
-    }
+    // }
+
+
 }
+
+
+
+
 
 .navbar-sticky{
     padding-right: 2rem;
@@ -326,7 +332,6 @@ body{
     &__info{
         display: flex;
         flex-direction: column;
-        // flex-basis: 50%;
         justify-content: center;
         flex: 1;
         @include respond(tab-port){
@@ -418,13 +423,6 @@ body{
         // width 100% prevents image from overflowing out of the parent --container 
         width: 70%;
 
-        // @include respond(tab-port){
-        //     width: 50%;
-    
-        // }
-        // animation: fade-up 1s;
-        // __img--container: contains the large svg image
-        // this is actually the parent of &__img
         &--container{
             flex: 1;
 
@@ -432,7 +430,6 @@ body{
                 flex: 2;
             }
 
-            // flex-basis: 30%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -481,10 +478,6 @@ body{
             font-size: 1.6rem;
         }
 
-        &:hover .skills__item-name{ // for sweep effect to work properly **
-            color: white;
-
-        }
 
         &-icon{
             font-size: 3.6rem;
@@ -519,14 +512,6 @@ body{
     width: 100%;
     background-color: var(--color-primary-dark);
 }
-// .skills__item:hover .skills__item-name{
-//     transform: scale(1.15);
-// }
-
-// .skills__item:hover .skills__item-icon{
-//     transform: scale(1.15);
-// }
-
 
 .underline-effect{
 
@@ -803,6 +788,21 @@ body{
         }
     }
 
+}
+
+// ** Media queries to ensure these effects only work on hovering
+// and not by clicking on mobile
+@media (hover: hover) {
+
+    .sweep-effect:hover {
+        background-position: 100%;
+        color: white;
+        transform: scale(1.05);
+    }
+
+    .skills__item:hover .skills__item-name {
+        color: white;
+    }
 }
 
 
