@@ -106,13 +106,6 @@ body{
     margin: 0 auto;
     padding: 5rem 2rem;
 
-    
-
-    // @include respond(tab-port){
-    //     max-width: 50rem;
-
-    // }
-
     animation: fade-up .75s .2s backwards;
     // animation name, length of animation, animation delay..
     // and backwards ensures that on load the content doesn't show before delay is over!
@@ -145,6 +138,10 @@ body{
         font-size: 3rem;
         max-width: 50%;
     }
+    // These work with the underline effect
+    display: inline-block;
+    position: relative;
+
     // main == the hello text in the hero/header
     &--main{
         font-size: 8rem;
@@ -196,7 +193,6 @@ body{
     //     transform: scale(1.05);
         
     // }
-
     
     // &:hover{
     //     // this shifts that background 100% over, covering it in the white
@@ -207,8 +203,6 @@ body{
     //     transform: scale(1.05);
         
     // }
-
-
 }
 
 
@@ -347,10 +341,11 @@ body{
         }
 
         &--subtitle{
-            display: inline-block;
+            display: block;
             font-size: 3rem;
             margin-bottom: 2rem;
             position: relative; // for underline effect** 
+            width: fit-content;
 
             @include respond(tab-port){
                 font-size: 2.5rem;
@@ -379,10 +374,11 @@ body{
                 display: inline-block;
                 padding: 0 3.2rem 0 0;
 
-                &:hover .about-me__info--list-name{
-                transform: scale(1);
-                opacity: 1;
-                }
+                // * name of hovered list icon / doesn't look great?
+                // &:hover .about-me__info--list-name{
+                // transform: scale(1);
+                // opacity: 1;
+                // }
 
                 &:hover .about-me__info--list-icon{
                     color: var(--color-primary);
@@ -444,10 +440,6 @@ body{
     flex-direction: column;
     justify-content: center;
     min-height: 80vh;    
-
-    &--title{
-        position: relative;
-    }
 
     &__container{
         max-width: 120rem;
@@ -543,6 +535,7 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: var(--color-grey-light-1);
 
     &__item-row{
         display: flex;
@@ -628,9 +621,6 @@ body{
     }
 
     &--title{
-        display: inline-block;
-        position: relative;
-        text-align: center;
         margin-bottom: 5rem;
 
     }
@@ -647,7 +637,6 @@ body{
 }
 
 .contact{
-    background-color: var(--color-grey-light-1);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -708,7 +697,7 @@ body{
         }
     }
     &__btn{
-        margin: 0 .25rem;
+        margin: 2rem .25rem;
         color: white;
         background-color: var(--color-primary);
         padding: 1rem 5rem;
@@ -725,6 +714,104 @@ body{
               transform: scale(1.05);
               background-color: var(--color-primary-dark);
           }
+    }
+}
+
+.projects{
+    background-color: white;
+
+    &--title{
+        margin-bottom: 5rem;
+    }
+}
+
+.project{
+
+    @include respond(tab-port){
+        flex-direction: column;
+    }
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16rem;
+
+    &__info{
+        flex-basis: 30%;
+        width: 80%;
+
+        &--title{
+            font-size: 3rem;
+            padding-bottom: 2rem;
+        }
+
+        &--description{
+            font-size: 1.6rem;
+            font-weight: 300;
+            padding-bottom: 2rem;
+        }
+
+        &--tech{
+            font-size: 1.6rem;
+            display: flex;
+            flex-wrap: wrap;
+            width: 90%;
+            @include respond(tab-port){
+                width: 100%;        
+            }
+
+            &--item{
+                color: white;
+                background-color: var(--color-primary);
+                padding: .6rem 1rem .6rem 1rem;
+                margin: .2rem;
+            }
+        }
+
+        &--buttons{
+
+            margin-top: 1rem;
+
+            &-btn{
+
+                text-decoration: none;
+                // border-radius: 1rem;
+
+                margin: 1rem .25rem;
+                color: var(--color-primary);
+                // background-color: var(--color-primary);
+                padding: .5rem 2.5rem;
+                display: inline-block; // necessary for effect!           
+                font-size: 1.6rem;
+                transition: all .2s;
+                backface-visibility: hidden;
+                border: 2px solid var(--color-primary);
+                cursor: pointer;
+                
+                &:hover{
+                    backface-visibility: hidden;
+                    color: white;
+                    background-color: var(--color-primary);
+                  }
+
+            }
+        }
+    }
+
+    &__show{
+        flex-basis: 70%;
+        margin-top: 3rem;
+
+        &--container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &--image{
+            max-width: 80%;
+            height: auto;
+        }
     }
 }
 

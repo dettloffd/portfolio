@@ -102,6 +102,8 @@ body {
 
 .header-primary {
   font-size: 6rem;
+  display: inline-block;
+  position: relative;
 }
 
 @media (max-width: 37.5em) {
@@ -306,10 +308,13 @@ body {
 }
 
 .about-me__info--subtitle {
-  display: inline-block;
+  display: block;
   font-size: 3rem;
   margin-bottom: 2rem;
   position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 @media (max-width: 56.25em) {
@@ -339,12 +344,6 @@ body {
   position: relative;
   display: inline-block;
   padding: 0 3.2rem 0 0;
-}
-
-.about-me__info--list-item:hover .about-me__info--list-name {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  opacity: 1;
 }
 
 .about-me__info--list-item:hover .about-me__info--list-icon {
@@ -418,10 +417,6 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   min-height: 80vh;
-}
-
-.skills--title {
-  position: relative;
 }
 
 .skills__container {
@@ -540,6 +535,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  background-color: var(--color-grey-light-1);
 }
 
 .education__item-row {
@@ -670,9 +666,6 @@ body {
 }
 
 .education--title {
-  display: inline-block;
-  position: relative;
-  text-align: center;
   margin-bottom: 5rem;
 }
 
@@ -687,7 +680,6 @@ body {
 }
 
 .contact {
-  background-color: var(--color-grey-light-1);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -757,7 +749,7 @@ body {
 }
 
 .form__btn {
-  margin: 0 .25rem;
+  margin: 2rem .25rem;
   color: white;
   background-color: var(--color-primary);
   padding: 1rem 5rem;
@@ -778,6 +770,125 @@ body {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
   background-color: var(--color-primary-dark);
+}
+
+.projects {
+  background-color: white;
+}
+
+.projects--title {
+  margin-bottom: 5rem;
+}
+
+.project {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-bottom: 16rem;
+}
+
+@media (max-width: 56.25em) {
+  .project {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.project__info {
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+  width: 80%;
+}
+
+.project__info--title {
+  font-size: 3rem;
+  padding-bottom: 2rem;
+}
+
+.project__info--description {
+  font-size: 1.6rem;
+  font-weight: 300;
+  padding-bottom: 2rem;
+}
+
+.project__info--tech {
+  font-size: 1.6rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 90%;
+}
+
+@media (max-width: 56.25em) {
+  .project__info--tech {
+    width: 100%;
+  }
+}
+
+.project__info--tech--item {
+  color: white;
+  background-color: var(--color-primary);
+  padding: .6rem 1rem .6rem 1rem;
+  margin: .2rem;
+}
+
+.project__info--buttons {
+  margin-top: 1rem;
+}
+
+.project__info--buttons-btn {
+  text-decoration: none;
+  margin: 1rem .25rem;
+  color: var(--color-primary);
+  padding: .5rem 2.5rem;
+  display: inline-block;
+  font-size: 1.6rem;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border: 2px solid var(--color-primary);
+  cursor: pointer;
+}
+
+.project__info--buttons-btn:hover {
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  color: white;
+  background-color: var(--color-primary);
+}
+
+.project__show {
+  -ms-flex-preferred-size: 70%;
+      flex-basis: 70%;
+  margin-top: 3rem;
+}
+
+.project__show--container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.project__show--image {
+  max-width: 80%;
+  height: auto;
 }
 
 .footer {
