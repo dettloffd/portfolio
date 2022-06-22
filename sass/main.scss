@@ -366,7 +366,7 @@ body{
             @include respond(tab-port){
                 // center the icons
                 text-align: center;
-        
+                margin-top: 6rem;
             }
             
             &-item{ // icons for github, linkedin, etc
@@ -423,7 +423,7 @@ body{
             flex: 1;
 
             @include respond(phone){
-                flex: 2;
+                flex: 1;
             }
 
             display: flex;
