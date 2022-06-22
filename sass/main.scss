@@ -313,7 +313,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    min-height: 100vh;
+    min-height: 80vh;
+    margin-bottom: 4rem;
 
     @include respond(tab-port){
         flex-direction: column;

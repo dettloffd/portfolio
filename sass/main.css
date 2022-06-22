@@ -262,7 +262,8 @@ body {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  min-height: 100vh;
+  min-height: 80vh;
+  margin-bottom: 4rem;
 }
 
 @media (max-width: 56.25em) {
