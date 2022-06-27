@@ -133,7 +133,7 @@ body{
 }
 
 .header-primary{
-    font-size: 5rem;
+    font-size: 6rem;
     color: #2d2d2d;
     font-weight: 400;
     @include respond(phone){
@@ -820,7 +820,7 @@ body{
 
 .footer{
     background-color: #333;
-    min-height: 50vh;
+    min-height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -877,6 +877,20 @@ body{
             text-decoration: none;
         }
     }
+
+    &__hr{
+        margin-top: 3rem;
+        border-bottom: 1px solid grey;
+        width: 90%;
+        padding-bottom: 2rem;
+    
+      }
+    
+      &__legal{
+        margin-top: 2rem;
+        color: grey;
+        text-align: center;
+      }
 
 }
 

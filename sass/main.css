@@ -101,7 +101,7 @@ body {
 }
 
 .header-primary {
-  font-size: 5rem;
+  font-size: 6rem;
   color: #2d2d2d;
   font-weight: 400;
   display: inline-block;
@@ -897,7 +897,7 @@ body {
 
 .footer {
   background-color: #333;
-  min-height: 50vh;
+  min-height: 40vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -970,6 +970,19 @@ body {
 
 .footer__social--link {
   text-decoration: none;
+}
+
+.footer__hr {
+  margin-top: 3rem;
+  border-bottom: 1px solid grey;
+  width: 90%;
+  padding-bottom: 2rem;
+}
+
+.footer__legal {
+  margin-top: 2rem;
+  color: grey;
+  text-align: center;
 }
 
 @media (hover: hover) {
